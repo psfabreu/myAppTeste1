@@ -6,10 +6,14 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { TodoPanePage } from '../pages/todoPane/todoPane';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+// !!! Import the todo service and its driver
+import { TodoService, TodoLocalStorageService } from "./services/todo/todo";
+
 
 @NgModule({
   declarations: [
@@ -17,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    TodoPanePage,
     TabsPage
   ],
   imports: [
@@ -29,11 +34,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    TodoPanePage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    // !!! Register them as providers
+    TodoService,
+    TodoLocalStorageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
